@@ -7,12 +7,14 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp tizen/* build && tizen.bat build-web -- build && tizen.bat package -t wgt -s default -- build/.buildResult",
+    "deploy": "tizen.bat install -n ReactTizen.wgt -- build/.buildResult",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
